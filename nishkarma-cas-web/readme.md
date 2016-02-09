@@ -1,11 +1,11 @@
 ##Functions
-  -. Authentication Handlers
-      Database
-      OAuth 1.0/2.0, OpenID
-  -. Long Term Authentication
-      Remember Me
-  -. IP Protect     
-  -. HA
+	-. Authentication Handlers
+       Database
+       OAuth 1.0/2.0, OpenID
+	-. Long Term Authentication
+       Remember Me
+	-. IP Protect     
+	-. HA
   
 ##Customizing Method
 	org.jasig.cas's cas-server-webapp 4.1.4 maven overlay
