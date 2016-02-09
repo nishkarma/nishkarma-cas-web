@@ -1,0 +1,29 @@
+
+downloads & compiles
+	apr-1.5.2.tar  
+	apr-iconv-1.2.1.tar  
+	apr-util-1.5.4.tar 
+	openssl-1.0.2d.tar
+	pcre-8.37.tar
+
+	httpd-2.4.16.tar
+
+cd httpd-2.4.16
+
+$ ./configure --prefix=/usr/local/apache2.4 \
+--enable-ssl \
+--enable-vhost-alias \
+--enable-proxy \
+--enable-proxy-connect \
+--enable-proxy-http \
+--enable-rewrite \
+--enable-mods-shared \
+--enable-headers \
+--with-ssl=/usr/local/openssl \
+--with-apr=/usr/local/apr \
+--with-apr-util=/usr/local/apr-util \
+--with-included-apr=/usr/local/apr \
+--with-pcre=/usr/local/pcre
+
+ $ make
+ $ make install

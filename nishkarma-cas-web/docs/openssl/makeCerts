@@ -1,0 +1,10 @@
+../bin/openssl genrsa -out ./private/key.pem 2048
+../bin/openssl req -new -key ./private/key.pem -out ./private/csr.pem
+../bin/openssl req -x509 -days 365 -key ./private/key.pem -in ./private/csr.pem -out ./certs/certificate.pem
+../bin/openssl x509 -in certs/certificate.pem -out certs/certificate.der -outform DER
+
+
+# on SSL CLIENT RUN FOLLOW
+#keytool -import -keystore $JAVA_HOME/jre/lib/security/cacerts -file certificate.cer  -alias cas.example.org -storepass changeit
+
+

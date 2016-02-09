@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Application context definition for Datasource. -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/jdbc
+         http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+         http://www.springframework.org/schema/jee
+         http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+
+	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="org.postgresql.Driver" />
+		<property name="jdbcUrl" value="jdbc:postgresql://127.0.0.1:5432/cas" />
+		<property name="username" value="cas" />
+		<property name="password" value="cas" />
+		<property name="idleConnectionTestPeriodInMinutes" value="60" />
+		<property name="idleMaxAgeInMinutes" value="240" />
+		<property name="maxConnectionsPerPartition" value="10" />
+		<property name="minConnectionsPerPartition" value="1" />
+		<property name="partitionCount" value="1" />
+		<property name="acquireIncrement" value="1" />
+		<property name="statementsCacheSize" value="100" />
+		<property name="releaseHelperThreads" value="3" />
+		<property name="connectionTestStatement" value="select 1" />
+	</bean>
+<!-- 
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/cas" />
+		<property name="resourceRef" value="true" />
+	</bean>
+ -->
+	<!-- tomcat server.xml -->
+<!-- 
+	<Resource name="jdbc/cas" auth="Container" driverClassName="org.postgresql.Driver"
+		initialSize="1" maxActive="10" maxIdle="5" maxWait="5000" username="cas"
+		password="cas" poolPreparedStatements="true" removeAbandoned="true"
+		type="javax.sql.DataSource" url="jdbc:postgresql://127.0.0.1:5432/cas"
+		validationQuery="select 1" />
+
+	<Context docBase="cas-server-webapp" path="/cas" reloadable="true"
+		source="org.eclipse.jst.jee.server:nishkarma-cas-web">
+		<ResourceLink name="jdbc/cas" global="jdbc/cas"
+			type="javax.sql.DataSource" />
+	</Context> -->
+
+	<!-- tomcat server.xml end -->
+
+</beans>

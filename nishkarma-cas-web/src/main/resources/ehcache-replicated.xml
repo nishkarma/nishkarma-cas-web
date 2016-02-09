@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache name="ehCacheTicketRegistryCache" updateCheck="false"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+
+	<diskStore path="java.io.tmpdir/cas" />
+
+	<!-- | Automatic peer discovery | See http://ehcache.org/generated/2.10.0/html/ehc-all/#page/Ehcache_Documentation_Set%2Fco-rmi_using_rmi.html%23 
+		| for more information. -->
+	<cacheManagerPeerProviderFactory class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory" 
+		properties="peerDiscovery=automatic, multicastGroupAddress=230.0.0.1, multicastGroupPort=4446, 
+		timeToLive=32" propertySeparator="," />
+
+	<!-- | Manual peer discovery | See http://ehcache.org/documentation/user-guide/rmi-replicated-caching#manual-peer-discovery-manual-peer-discovery 
+		| for more information -->
+		
+		<!-- 127.0.0.1 should be changed to peer ip -->
+<!-- 	<cacheManagerPeerProviderFactory
+		class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+		properties="peerDiscovery=manual,rmiUrls=//127.0.0.1:41001/cas_st|//127.0.0.1:41001/cas_tgt" />
+	<cacheManagerPeerListenerFactory
+		class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
+		properties="hostName=localhost, port=41001, socketTimeoutMillis=2000" /> -->
+</ehcache>

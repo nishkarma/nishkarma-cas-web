@@ -1,0 +1,23 @@
+Self-Sign with Keytool
+
+1. Generate the certificate in the keystore file
+
+keytool -genkey -keyalg RSA -alias cas.example.org -keystore mykeystore.jks \
+   -dname "CN=cas.example.org, OU=Nishkarma, O=Nishkarma, L=Seoul, C=KR" \
+   -storepass password1 -validity 360 -keysize 2048 -keypass password1
+   
+
+2. Export the generated certificate to the server.cer
+
+keytool -export -alias cas.example.org -storepass password1 -file myserver.cer -keystore mykeystore.jks
+
+3. Create the truststore file(cacerts.jks) and add the certificate to the truststore
+
+keytool -import -v -trustcacerts -alias cas.example.org -storepass password1 -file myserver.cer -keystore cacerts.jks -keypass password1
+
+4. To see the contents of the keystore
+
+keytool -list -v -keystore cacerts.jks -storepass password1
+
+
+참조 : http://docs.oracle.com/cd/E19798-01/821-1751/ghlgv/index.html

@@ -1,0 +1,15 @@
+{
+	"@class" : "org.jasig.cas.services.RegexRegisteredService",
+	"id" : 10000001,
+	"description" : "This service definition authorized all application urls that support HTTPS",
+	"serviceId" : "^https://(?:local.example.org:8143|local.example-other.org:8243).+",
+	"name": "HTTPS",
+	"evaluationOrder" : 10000001,
+	"proxyPolicy" : {
+		"@class" : "org.jasig.cas.services.RegexMatchingRegisteredServiceProxyPolicy",
+		"pattern" : "https://(?:local.example.org:8143|local.example-other.org:8243).+"
+	},
+	"attributeReleasePolicy" : {
+		"@class" : "org.jasig.cas.services.ReturnAllAttributeReleasePolicy"
+	}
+}

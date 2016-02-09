@@ -1,0 +1,18 @@
+Self-Sign with Keytool
+
+1. run script self-sign.txt in cas.example.org directory. 
+2. run script self-sign.txt in local.example.org directory. 
+3. run script self-sign.txt in local.example-other.org directory. 
+
+
+*PKIX path building failed
+https://wiki.jasig.org/display/casum/ssl+troubleshooting+and+reference+guide#SSLTroubleshootingandReferenceGuide-ImportTrustedCertificate
+
+keytool -import -keystore $JAVA_HOME/jre/lib/security/cacerts -file ./cas.example.org/myserver.cer  -alias cas.example.org -storepass changeit
+
+keytool -import -keystore $JAVA_HOME/jre/lib/security/cacerts -file ./local.example.org/myserver.cer  -alias local.example.org -storepass changeit
+
+keytool -import -keystore $JAVA_HOME/jre/lib/security/cacerts -file ./local.example-other.org/myserver.cer  -alias local.example-other.org -storepass changeit
+
+keytool -list -v -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit > a.txt
+
