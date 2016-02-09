@@ -45,10 +45,12 @@ At first insert the following line in hosts file.
 127.0.0.1 cas.example.org local.example.org local.example-other.org
 
 The SSO connections should be https connections. So it needs SSL certificate key.
-Make SSL certificate keys which is described in /docs/test-ssl/self-sign.txt (java keytool method) or /openssl/makeCerts (openssl method).
+Make SSL certificate keys. 
+How to make keys are described in /docs/test-ssl/self-sign.txt(java keytool method) or /openssl/makeCerts(openssl method).
 ```
 
 5) Running
+```
 There's tomcat server.xml sample in /docs/tomcat/server.xml and HA configuration whth Apache http server in /docs/HA.
 
 run tomcat server, 
@@ -58,7 +60,7 @@ The default password is 1234.
 If you want the logout connect to http://cas.example.org:8443/cas/logout.
 
 You can test the Social login like facebook and google+...
-
+```
 
 ##Configuration Reference
 	http://jasig.github.io/cas/4.1.x/index.html
